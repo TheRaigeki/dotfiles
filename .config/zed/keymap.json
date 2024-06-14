@@ -1,0 +1,70 @@
+[
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in normal & visual mode
+      "; c": "editor::ToggleComments"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      // "down": ["workspace::SendKeystrokes", "4 j"]
+      // "up": ["workspace::SendKeystrokes", "4 k"]
+      "s j": [
+        "workspace::SendKeystrokes",
+        "ctrl-w j"
+      ],
+      "s k": [
+        "workspace::SendKeystrokes",
+        "ctrl-w k"
+      ],
+      "s h": [
+        "workspace::SendKeystrokes",
+        "ctrl-w h"
+      ],
+      "s l": [
+        "workspace::SendKeystrokes",
+        "ctrl-w l"
+      ],
+      "shift-k": "editor::Hover",
+      "ctrl-j": "editor::GoToDiagnostic",
+      "ctrl-shift-j": "editor::GoToPrevDiagnostic",
+      "s v": "pane::SplitRight",
+      "s s": "pane::SplitDown",
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePrevItem",
+      "; e": "diagnostics::Deploy",
+      "; f": "file_finder::Toggle",
+      "s f": "workspace::ToggleLeftDock",
+      "g p": "editor::FindAllReferences",
+      "; o": "outline::Toggle",
+      "/": "vim::Search",
+      "g d": "editor::GoToDefinitionSplit"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      // visual, visual line & visual block modes
+      "=": "editor::Format",
+      "shift-k": "editor::MoveLineUp",
+      "shift-j": "editor::MoveLineDown"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in insert mode
+      // e.g.
+      // "j j": "vim::NormalBefore" // remap jj in insert mode to escape.
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "shift-n": "project_panel::NewFile"
+    }
+  }
+]
