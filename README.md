@@ -30,8 +30,3 @@ This will create references in the equivalent directories in your $Homne-Directo
 ## YouTube-Video
 If you need more instructions, please visit this [YouTube Video](https://www.youtube.com/watch?v=y6XCebnB9gs).
 
-### Other way (w/o stow)
-You can also use the install.sh script to create the syslinks.\
-For this, please run the following command in ./dotfiles: `chmod +x install.sh`\
-After that, run the script like this: `./install.sh`
-
