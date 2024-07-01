@@ -20,6 +20,7 @@ fi
 # User configuration
 export LANG=en_US.UTF-8
 alias lg='lazygit'
+alias vim='nvim'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
