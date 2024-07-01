@@ -40,3 +40,9 @@ To use Wezterm properly, you need to install the BlexMono Nerd Font. You can do 
 ```
 brew install --cask font-blex-mono-nerd-font
 ```
+
+## Install Angular CLI
+
+```
+npm i -g @angular/cli
+```
