@@ -37,6 +37,13 @@ npm i -g @angular/cli
 ```
 brew install neovim
 ```
+Grant Sudo Permissions for Nvim to prevent sudo conflicts
+
+```
+sudo chown -R $(whoami) ~/.local/share/nvim
+sudo chown -R $(whoami) ~/.config/nvim
+sudo chown -R $(whoami) ~/.cache/nvim
+```
 
 ## Installation
 Clone the repo to your $HOME-Directory,
