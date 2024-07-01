@@ -44,6 +44,31 @@ sudo chown -R $(whoami) ~/.local/share/nvim
 sudo chown -R $(whoami) ~/.config/nvim
 sudo chown -R $(whoami) ~/.cache/nvim
 ```
+## Tmux
+
+```
+brew install tmux
+```
+
+```
+git clone https://github.com/tmux-plugins/tmp ~/.tmux/plugins/tmp
+```
+
+```
+brew install fzf
+```
+
+```
+chmod -x ~/.tmux/plugins/tmp
+```
+After that all, start tmux and type PREFIX + I to install all packages.
+
+Try PREFIX + o, if it does not open sessionx, try the following:
+
+```
+chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/tmuxinator.sh
+chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/sessionx.sh
+```
 
 ## Installation
 Clone the repo to your $HOME-Directory,
