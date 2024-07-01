@@ -34,3 +34,9 @@ If you need more instructions, please visit this [YouTube Video](https://www.you
 ## Raycast
 Download and install raycast from the official website.
 Then go to Raycast Settings -> Account and login to your account (with GitHub). After that enable Cloud Sync to get all synced settings, shortcuts, theme and more.
+
+## Nerd Font
+To use Wezterm properly, you need to install the BlexMono Nerd Font. You can do this with the following command: 
+```
+brew install --cask font-blex-mono-nerd-font
+```
