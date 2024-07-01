@@ -30,3 +30,7 @@ This will create references in the equivalent directories in your $Homne-Directo
 ## YouTube-Video
 If you need more instructions, please visit this [YouTube Video](https://www.youtube.com/watch?v=y6XCebnB9gs).
 
+# Additional Configurations
+## Raycast
+Download and install raycast from the official website.
+Then go to Raycast Settings -> Account and login to your account (with GitHub). After that enable Cloud Sync to get all synced settings, shortcuts, theme and more.
