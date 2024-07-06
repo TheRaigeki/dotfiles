@@ -15,6 +15,12 @@ brew install git
 brew install stow
 ```
 
+### ripgreg
+
+```
+brew install ripgreg
+```
+
 # Additional Configurations (DO BEFORE STOW)
 ## Raycast
 Download and install raycast from the official website.
@@ -61,14 +67,6 @@ brew install fzf
 ```
 chmod -x ~/.tmux/plugins/tmp
 ```
-After that all, start tmux and type PREFIX + I to install all packages.
-
-Try PREFIX + o, if it does not open sessionx, try the following:
-
-```
-chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/tmuxinator.sh
-chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/sessionx.sh
-```
 
 ## Installation
 Clone the repo to your $HOME-Directory,
@@ -82,6 +80,13 @@ stow .
 ```
 This will create references in the equivalent directories in your $Homne-Directory like in the dotfiles directory.
 
-## YouTube-Video
-If you need more instructions, please visit this [YouTube Video](https://www.youtube.com/watch?v=y6XCebnB9gs).
+## Additional Configurations
 
+## Tmux
+After that all, start tmux and type PREFIX + I to install all packages.
+Try PREFIX + o, if it does not open sessionx, try the following:
+
+```
+chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/tmuxinator.sh
+chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/sessionx.sh
+```
