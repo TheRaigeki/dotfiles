@@ -80,7 +80,7 @@ stow .
 ```
 This will create references in the equivalent directories in your $Homne-Directory like in the dotfiles directory.
 
-## Additional Configurations
+## Final Checks & Configurations
 
 ## Tmux
 After that all, start tmux and type PREFIX + I to install all packages.
