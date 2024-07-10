@@ -1,0 +1,43 @@
+set NERDTree
+
+" Set leader
+let mapleader = " "
+
+set relativenumber " Shows relative line numbers
+set number " Shows the absolute line number on current line
+
+" Starts the file search
+map ;f :action GotoFile<CR>
+
+" Shows all errors in the project (Diagnostics)
+map ;e :action ShowErrorsWarnings<CR>
+
+" Searchs for a text in the whole project
+map ;r :action FindInPath<CR>
+
+" Split window (vertically)
+map ss :action SplitHorizontally<CR>
+
+" Split window (horizontally)
+map sv :action SplitVertically<CR>
+
+" Switches to splited window left
+map sh :action SelectPreviousTab<CR>
+
+" Switches to splited window down
+map sj :action SelectNextWindow<CR>
+
+" Switches to splited window top
+map sk :action SelectPreviousWindow<CR>
+
+" Switches to splited window top
+map sl :action SelectNextTab<CR>
+
+" Moves marked rows up
+vmap <S-k> :action MoveLineUp<CR>
+
+" Moves marked rows down
+vmap <S-j> :action MoveLineDown<CR>
+
+" NERDTree Configs
+map sf :NERDTreeToggle<CR>
