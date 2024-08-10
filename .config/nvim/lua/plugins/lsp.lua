@@ -4,6 +4,7 @@ return {
         opts = function(_, opts)
             vim.list_extend(opts.ensure_installed, {
                 "stylua",
+                'dcm',
                 "selene",
                 "luacheck",
                 "markdownlint",

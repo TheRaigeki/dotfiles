@@ -5,6 +5,7 @@ export PATH=/opt/homebrew/sbin:$PATH
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export PATH="$ANDROID_HOME/emulator:$PATH"
 export PATH="$PATH/Library/Android/sdk/platform-tools"
+export PATH="$PATH/development/flutter/bin"
 
 # Path to your oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"

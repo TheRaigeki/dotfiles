@@ -8,6 +8,7 @@ return {
         "css",
         "gitignore",
         "go",
+        "dart",
         "graphql",
         "http",
         "java",
