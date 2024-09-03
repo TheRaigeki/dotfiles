@@ -62,6 +62,11 @@ vim.opt.formatoptions:append({ "r" })
 vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
 vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
 
+-- Deactivate highlighting of stings in ts files
+vim.cmd("hi! link @string.tsx Normal")
+-- Deactivate highlighting of SnippetTabstop
+vim.cmd("hi! link SnippetTabstop Normal")
+
 -- checks if the used nvim version is 0.8 or above and if so, it sets cmdheight to 0 so the cmd line is just visible if used and not everytime
 if vim.fn.has("nvim-0.8") == 1 then
     vim.opt.cmdheight = 0
