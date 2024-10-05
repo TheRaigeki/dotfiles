@@ -26,10 +26,10 @@ keymap.set("n", "sl", "<C-w>l")
 -- Move Line
 keymap.set('v', "<s-k>", ":m '<-2<cr>gv=gv", opts) -- move line up
 keymap.set('v', "<s-j>", ":m '>+1<cr>gv=gv", opts) -- move line down
-keymap.set('n', "<A-k>", "", opts) -- override global keymap with empfty cmd to disable it
-keymap.set('n', "<A-j>", "", opts) -- override global keymap with empfty cmd to disable it
-keymap.set('i', "<A-k>", "", opts) -- override global keymap with empfty cmd to disable it
-keymap.set('i', "<A-j>", "", opts) -- override global keymap with empfty cmd to disable it
+keymap.set('n', "<A-k>", "", opts) -- override global keymap with empty cmd to disable it
+keymap.set('n', "<A-j>", "", opts) -- override global keymap with empty cmd to disable it
+keymap.set('i', "<A-k>", "", opts) -- override global keymap with empty cmd to disable it
+keymap.set('i', "<A-j>", "", opts) -- override global keymap with empty cmd to disable it
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
