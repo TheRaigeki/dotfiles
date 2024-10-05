@@ -1,12 +1,19 @@
-# Set up PATH
+# Base-Path
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+# Homebrew-Paths
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-export PATH="$ANDROID_HOME/emulator:$PATH"
-export PATH="$PATH/Library/Android/sdk/platform-tools"
 
-# Path to your oh-my-zsh installation
+# OpenJDK 17
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# Android SDK and Emulator
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH="$ANDROID_HOME/emulator:$PATH"
+export PATH="$PATH:/Library/Android/sdk/platform-tools"
+
+# Path to my oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
 # Load oh-my-zsh
