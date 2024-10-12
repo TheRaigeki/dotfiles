@@ -68,7 +68,13 @@ brew install fzf
 chmod -x ~/.tmux/plugins/tmp
 ```
 
-## Installation
+## Aerospace (Tiling Window Manager)
+```
+brew install --cask nikitabobko/tap/aerospace
+```
+```
+
+## Link to Machine
 Clone the repo to your $HOME-Directory,
 ```
 git clone https://github.com/RobinRuf/dotfiles.git
@@ -78,7 +84,10 @@ Then use GNU Stow to create symlinks.
 ```
 stow .
 ```
+
 This will create references in the equivalent directories in your $Homne-Directory like in the dotfiles directory.
+
+NOTE: If you ever want to remove all symlinks, use the -D flag like so: `stow -D .` in your dotfiles folder.
 
 ## Final Checks & Configurations
 
