@@ -68,12 +68,6 @@ brew install fzf
 chmod -x ~/.tmux/plugins/tmp
 ```
 
-## Aerospace (Tiling Window Manager)
-```
-brew install --cask nikitabobko/tap/aerospace
-```
-```
-
 ## Link to Machine
 Clone the repo to your $HOME-Directory,
 ```
