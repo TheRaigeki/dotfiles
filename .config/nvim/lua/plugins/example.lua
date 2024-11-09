@@ -20,15 +20,23 @@ return {
         },
     },
 
+    -- enabling trouble
+    { "folke/trouble.nvim", enabled = true },
+
     -- change trouble config
     {
         "folke/trouble.nvim",
         -- opts will be merged with the parent spec
         opts = { use_diagnostic_signs = true },
+        cmd = "Trouble",
+        keys = {
+            {
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Trouble diagnostics",
+            },
+        },
     },
-
-    -- disable trouble
-    { "folke/trouble.nvim", enabled = false },
 
     -- add symbols-outline
     {

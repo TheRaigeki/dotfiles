@@ -86,14 +86,14 @@ return {
         end,
         desc = "Resume the previous telescope picker",
       },
-      {
-        ";e",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.diagnostics()
-        end,
-        desc = "Lists Diagnostics for all open buffers or a specific buffer",
-      },
+      -- {
+      --   ";e",
+      --   function()
+      --     local builtin = require("telescope.builtin")
+      --     builtin.diagnostics()
+      --   end,
+      --   desc = "Lists Diagnostics for all open buffers or a specific buffer",
+      -- },
       {
         ";s",
         function()
