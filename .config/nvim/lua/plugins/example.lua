@@ -20,24 +20,6 @@ return {
         },
     },
 
-    -- enabling trouble
-    { "folke/trouble.nvim", enabled = true },
-
-    -- change trouble config
-    {
-        "folke/trouble.nvim",
-        -- opts will be merged with the parent spec
-        opts = { use_diagnostic_signs = true },
-        cmd = "Trouble",
-        keys = {
-            {
-                "<leader>xx",
-                "<cmd>Trouble diagnostics toggle<cr>",
-                desc = "Trouble diagnostics",
-            },
-        },
-    },
-
     -- add symbols-outline
     {
         "simrat39/symbols-outline.nvim",
@@ -143,25 +125,6 @@ return {
     -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
     { import = "lazyvim.plugins.extras.lang.typescript" },
 
-    -- the opts function can also be used to change the default opts:
-    {
-        "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
-        opts = function(_, opts)
-            table.insert(opts.sections.lualine_x, "😄")
-        end,
-    },
-
-    -- or you can return new options to override all the defaults
-    {
-        "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
-        opts = function()
-            return {
-                --[[add your custom lualine config here]]
-            }
-        end,
-    },
 
     -- use mini.starter instead of alpha
     { import = "lazyvim.plugins.extras.ui.mini-starter" },
@@ -176,7 +139,6 @@ return {
             ensure_installed = {
                 "stylua",
                 "prettier",
-                "flake8",
                 "eslint",
             },
         },
