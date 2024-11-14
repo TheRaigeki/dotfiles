@@ -2,8 +2,9 @@ return {
   -- Incremental rename
   {
     "smjonas/inc-rename.nvim",
-    cmd = "IncRename",
-    config = true,
+    config = function()
+      require("inc_rename").setup({})
+    end,
   },
 
   -- Show Emojis in autocomplete, if something like ':smile' was written

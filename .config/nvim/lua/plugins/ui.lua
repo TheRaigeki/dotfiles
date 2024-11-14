@@ -2,6 +2,7 @@ return {
   {
     "folke/noice.nvim",
     opts = function(_, opts)
+      opts.presets.inc_rename = true
       table.insert(opts.routes, {
         filter = {
           event = "notify",
