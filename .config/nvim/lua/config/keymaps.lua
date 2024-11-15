@@ -31,6 +31,11 @@ keymap.set('n', "<A-j>", "", opts) -- override global keymap with empty cmd to d
 keymap.set('i', "<A-k>", "", opts) -- override global keymap with empty cmd to disable it
 keymap.set('i', "<A-j>", "", opts) -- override global keymap with empty cmd to disable it
 
+keymap.set('', "<up>", "<nop>", { noremap = true })
+keymap.set('', "<down>", "<nop>", { noremap = true })
+keymap.set('i', "<up>", "<nop>", { noremap = true })
+keymap.set('i', "<down>", "<nop>", { noremap = true })
+
 keymap.set("n", "<leader>r", function()
   return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true, desc = "Incremental Renaming" })
