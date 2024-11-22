@@ -50,9 +50,6 @@ require("lazy").setup({
         -- version = "*", -- try installing the latest stable version for plugins that support semver
     },
     -- path for local scripts or modules
-    dev = {
-        path = "~/.ghq/github.com/",
-    },
     checker = { enabled = true }, -- automatically check for plugin updates
     performance = {
         -- cache = {
