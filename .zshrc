@@ -1,8 +1,24 @@
+# Load oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+# Path to my oh-my-zsh installation
+export ZSH="$HOME/.oh-my-zsh"
+
+# Initialize oh-my-posh after PATH is set
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+    eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/tokyonight_storm.omp.json)"
+fi
+
+# Fuzzy Finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# User configuration
+export LANG=en_US.UTF-8
+alias lg='lazygit'
+alias vim='nvim'
+
 # Base-Path
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-
-#Maven
-export PATH=/opt/apache-maven/bin:$PATH
 
 # Homebrew-Paths
 export PATH=/opt/homebrew/bin:$PATH
@@ -11,48 +27,15 @@ export PATH=/opt/homebrew/sbin:$PATH
 # Export Java and Android-SDK for Android Development
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$JAVA_HOME/bin:$PATH
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-
-# OpenJDK 17
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-
-# Android SDK and Emulator
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH="$ANDROID_HOME/emulator:$PATH"
 export PATH="$PATH:/Library/Android/sdk/platform-tools"
 
-# Path to my oh-my-zsh installation
-export ZSH="$HOME/.oh-my-zsh"
+#Maven
+export PATH=/opt/apache-maven/bin:$PATH
 
-# Load oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-# Initialize oh-my-posh after PATH is set
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/tokyonight_storm.omp.json)"
-fi
-
-# User configuration
-export LANG=en_US.UTF-8
-alias lg='lazygit'
-alias vim='nvim'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# OpenJDK 17
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
