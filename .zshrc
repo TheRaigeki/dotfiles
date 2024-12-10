@@ -1,9 +1,17 @@
 # Base-Path
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
+#Maven
+export PATH=/opt/apache-maven/bin:$PATH
+
 # Homebrew-Paths
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
+
+# Export Java and Android-SDK for Android Development
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/bin:$PATH
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 # OpenJDK 17
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
@@ -31,10 +39,6 @@ alias vim='nvim'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Export Java and Android-SDK for Android Development
-export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -49,7 +53,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
