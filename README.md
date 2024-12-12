@@ -5,6 +5,17 @@ This Repo contains my dotfiles like my nvim setup, tmux configs and more.
 ## Requirements
 Make sure you have the following installed on your systen
 
+### oh-my-zsh & oh-my-posh
+```
+zsh --version
+oh-my-posh --version
+```
+if not installed yet, install it:
+```
+brew install oh-my-posh
+brew install zsh
+```
+
 ### Git
 ```
 brew install git
