@@ -211,7 +211,12 @@ return {
                     },
                 },
             },
-            setup = {},
+            setup = {
+                lua_ls = function(_, opts)
+                    local capabilities = require("blink.cmp").get_lsp_capabilities()
+                    require("lspconfig").lua_ls.setup { capabilities = capabilities }
+                end,
+            },
         },
     },
 }
