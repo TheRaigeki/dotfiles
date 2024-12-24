@@ -31,3 +31,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.autoindent = true
   end,
 })
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = function()
+        vim.api.nvim_set_hl(0, "Visual", { bg = "#264653", fg = "NONE" })
+    end,
+})
