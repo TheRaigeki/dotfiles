@@ -23,7 +23,7 @@ return {
                     enabled = false,
                 },
             },
-            signature = { enabled = true },
+            signature = { enabled = false },
 
              -- disable blink.nvim in telescope prompts (i.e. new file, delete file confirmation)
             enabled = function()
