@@ -10,10 +10,17 @@ return {
                 use_nvim_cmp_as_default = true,
                 nerd_font_variant = 'mono',
             },
-            completion = {
+            completion = {  -- ALLE completion-Einstellungen unter einem Block
                 list = {
                     max_items = 200,
-                    selection = 'manual',
+                    selection = {
+                        preselect = false,
+                        auto_insert = false,
+                    },
+                    cycle = {
+                        from_bottom = true,
+                        from_top = true,
+                    },
                 },
                 menu = {
                     max_height = 10,
@@ -25,7 +32,7 @@ return {
             },
             signature = { enabled = false },
 
-             -- disable blink.nvim in telescope prompts (i.e. new file, delete file confirmation)
+            -- disable blink.nvim in telescope prompts (i.e. new file, delete file confirmation)
             enabled = function()
                 return vim.bo.buftype ~= 'prompt' and vim.b.completion ~= false
             end,
