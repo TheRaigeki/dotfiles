@@ -11,10 +11,11 @@ return {
                 "tailwindcss-language-server",
                 "typescript-language-server",
                 "css-lsp",
-                "rust-analyzer",
+                "rust-analyzer"
             })
         end,
     },
+
 
     -- lsp servers
     {

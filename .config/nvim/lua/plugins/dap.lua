@@ -6,7 +6,9 @@ return {
             "rcarriga/nvim-dap-ui",
             "nvim-neotest/nvim-nio",
             "theHamsta/nvim-dap-virtual-text",
-            "leoluz/nvim-dap-go"
+            -- DEBUG LANGUAGES
+            "leoluz/nvim-dap-go", -- golang
+            -- java (in lsp.lua)
         },
         config = function()
             require("dapui").setup()
