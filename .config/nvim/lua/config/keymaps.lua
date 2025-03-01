@@ -36,6 +36,12 @@ keymap.set('', "<down>", "<nop>", { noremap = true })
 keymap.set('i', "<up>", "<nop>", { noremap = true })
 keymap.set('i', "<down>", "<nop>", { noremap = true })
 
+-- Quickfix
+keymap.set("n", "<C-c><C-n>", ":cnext<CR>", { noremap = true, silent = true })
+keymap.set("n", "<C-c><C-p>", ":cprev<CR>", { noremap = true, silent = true })
+keymap.set("n", "<C-c><C-c>", ":cclose<CR>", { noremap = true, silent = true })
+keymap.set("n", "<C-c><C-o>", ":copen<CR>", { noremap = true, silent = true })
+
 keymap.set("n", "<leader>r", function()
   return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true, desc = "Incremental Renaming" })
