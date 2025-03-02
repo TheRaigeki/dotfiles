@@ -26,7 +26,7 @@ config.force_reverse_video_cursor = false
 config.enable_tab_bar = false
 
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.9
 config.macos_window_background_blur = 9
 
 config.max_fps = 120
