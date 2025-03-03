@@ -21,17 +21,17 @@ return {
     {
         "neovim/nvim-lspconfig",
         init = function()
-			local keys = require("lazyvim.plugins.lsp.keymaps").get()
-			keys[#keys + 1] = {
-				"gd",
-				function()
-					-- DO NOT RESUSE WINDOW
-					require("telescope.builtin").lsp_definitions({ reuse_win = false })
-				end,
-				desc = "Goto Definition",
-				has = "definition",
-			}
-		end,
+            local keys = require("lazyvim.plugins.lsp.keymaps").get()
+            keys[#keys + 1] = {
+                "gd",
+                function()
+                    -- DO NOT RESUSE WINDOW
+                    require("telescope.builtin").lsp_definitions({ reuse_win = false })
+                end,
+                desc = "Goto Definition",
+                has = "definition",
+            }
+        end,
         opts = {
             inlay_hints = { enabled = false },
             -- @type lspconfig.options
@@ -211,13 +211,33 @@ return {
                         },
                     },
                 },
+                angularls = {},
             },
             setup = {
                 lua_ls = function(_, opts)
                     local capabilities = require("blink.cmp").get_lsp_capabilities()
                     require("lspconfig").lua_ls.setup { capabilities = capabilities }
                 end,
+                angularls = function()
+                    LazyVim.lsp.on_attach(function(client)
+                        -- HACK: Deactivate angulars rename capability to prevent double rename prompts
+                        client.server_capabilities.renameProvider = false
+                    end, "angularls")
+                end,
             },
         },
+    },
+
+    {
+        "neovim/nvim-lspconfig",
+        opts = function(_, opts)
+            LazyVim.extend(opts.servers.tsserver, "settings.tsserver.globalPlugins", {
+                {
+                    name = "@angular/language-server",
+                    location = LazyVim.get_pkg_path("angular-language-server", "/node_modules/@angular/language-server"),
+                    enableForWorkspaceTypeScriptVersions = false,
+                },
+            })
+        end,
     },
 }
