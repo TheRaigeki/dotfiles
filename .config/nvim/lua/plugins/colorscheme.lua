@@ -23,6 +23,11 @@ return {
                     bg = c.bg_dark,
                     fg = c.bg_dark,
                 }
+                -- Highlight Color in Visual Mode
+                hl.Visual = {
+                    fg = "NONE",
+                    bg = "#1e3842",
+                }
             end,
         }
     end,
