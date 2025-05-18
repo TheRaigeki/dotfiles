@@ -1,4 +1,5 @@
 return {
+    -- install and register lsp server and tools for nvim-lspconfig
     {
         "williamboman/mason.nvim",
         opts = function(_, opts)
@@ -15,7 +16,6 @@ return {
             })
         end,
     },
-
 
     -- lsp servers
     {
