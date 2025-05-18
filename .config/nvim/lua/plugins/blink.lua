@@ -1,8 +1,19 @@
 return {
     {
         'saghen/blink.cmp',
-        dependencies = 'rafamadriz/friendly-snippets',
+        dependencies = {
+            'rafamadriz/friendly-snippets',
+            'Kaiser-Yang/blink-cmp-avante',
+        },
         opts = {
+            default = { 'avante', 'lsp', 'path', 'luasnip', 'buffer' },
+            providers = {
+                avante = {
+                    module = 'blink-cmp-avante',
+                    name = 'Avante',
+                    opts = {}
+                }
+            },
             keymap = {
                 preset = 'default',
             },
@@ -10,7 +21,7 @@ return {
                 use_nvim_cmp_as_default = true,
                 nerd_font_variant = 'mono',
             },
-            completion = {  -- ALLE completion-Einstellungen unter einem Block
+            completion = {
                 list = {
                     max_items = 200,
                     selection = {
