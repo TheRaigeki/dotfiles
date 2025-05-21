@@ -6,13 +6,15 @@ return {
             'Kaiser-Yang/blink-cmp-avante',
         },
         opts = {
-            default = { 'avante', 'lsp', 'path', 'luasnip', 'buffer' },
-            providers = {
-                avante = {
-                    module = 'blink-cmp-avante',
-                    name = 'Avante',
-                    opts = {}
-                }
+            sources = {
+                default = { 'avante', 'lsp', 'path', 'buffer' },
+                providers = {
+                    avante = {
+                        module = 'blink-cmp-avante',
+                        name = 'Avante',
+                        opts = {}
+                    }
+                },
             },
             keymap = {
                 preset = 'default',
