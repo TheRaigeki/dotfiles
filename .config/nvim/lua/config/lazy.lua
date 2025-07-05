@@ -37,6 +37,7 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.lang.markdown" },
         --     { import = "lazyvim.plugins.extras.coding.copilot" }, GitHub Copilot Membership needed
         { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+        { import = 'echasnovski/mini.nvim', version = false },
         -- import/override with your plugins
         { import = "plugins" },
     },
