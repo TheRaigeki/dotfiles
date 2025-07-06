@@ -47,11 +47,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# TMUX scripts and custom commands
+export PATH="$HOME/.config/tmux/scripts:$PATH"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# Secrets (Keys) for avante.nvim
-if [[ -r $HOME/.zsh_secrets ]]; then
-  source $HOME/.zsh_secrets
-fi
