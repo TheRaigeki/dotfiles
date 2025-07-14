@@ -19,9 +19,11 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Changes indents from 4 to 2 for specific files because of language conventions
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { 
-    "css", "html", "tsx", "jsx", "javascript", "typescript", "javascriptreact", "typescriptreact",
-    "json", "cmake", "graphql", "scss", "sql", "svelte", "query", "yaml", "toml", "ts", "js",
+  pattern = {
+    "css", "scss", "html", "json", "yaml", "toml", "graphql",
+    "tsx", "jsx", "typescript", "typescriptreact", "ts",
+    "javascript", "javascriptreact", "js", "svelte",
+    "cmake", "sql", "query", "md", "markdown", "sh", "bash", "lua"
   },
   callback = function()
     vim.bo.shiftwidth = 2
