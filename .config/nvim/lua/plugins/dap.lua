@@ -8,7 +8,7 @@ return {
             "theHamsta/nvim-dap-virtual-text",
             -- DEBUG LANGUAGES
             "leoluz/nvim-dap-go", -- golang
-            -- java (in lsp.lua)
+            -- java (in mason-lsp.lua)
         },
         config = function()
             require("dapui").setup()

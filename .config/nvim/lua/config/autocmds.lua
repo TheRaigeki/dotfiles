@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "css", "scss", "html", "json", "yaml", "toml", "graphql",
     "tsx", "jsx", "typescript", "typescriptreact", "ts",
     "javascript", "javascriptreact", "js", "svelte",
-    "cmake", "sql", "query", "md", "markdown", "sh", "bash", "lua"
+    "sql", "query", "md", "markdown", "sh", "bash", "lua"
   },
   callback = function()
     vim.bo.shiftwidth = 2

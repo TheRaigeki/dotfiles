@@ -14,13 +14,14 @@ return {
   },
   -- Telescope
   {
-    "telescope.nvim",
+    "nvim-telescope/telescope.nvim",
     dependencies = {
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
       },
       "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-lua/plenary.nvim",
     },
     keys = {
       {

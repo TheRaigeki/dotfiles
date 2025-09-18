@@ -36,15 +36,15 @@ vim.opt.swapfile = false
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.wildignore:append({
-    "*/node_modules/*",
-    "*/build/*",
-    "*/target/*",
-    "*/venv/*",
-    "*/.venv/*",
-    "*/__pycache__/*",
-    "*/.git/*",
-    "*.a",
-    "*.o",
+  "*/node_modules/*",
+  "*/build/*",
+  "*/target/*",
+  "*/venv/*",
+  "*/.venv/*",
+  "*/__pycache__/*",
+  "*/.git/*",
+  "*.a",
+  "*.o",
 }) -- defines, which folders should be ignored while searching
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
@@ -69,5 +69,5 @@ vim.cmd("hi! link SnippetTabstop Normal")
 
 -- checks if the used nvim version is 0.8 or above and if so, it sets cmdheight to 0 so the cmd line is just visible if used and not everytime
 if vim.fn.has("nvim-0.8") == 1 then
-    vim.opt.cmdheight = 0
+  vim.opt.cmdheight = 0
 end
