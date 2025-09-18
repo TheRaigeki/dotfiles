@@ -48,5 +48,9 @@ end, { expr = true, desc = "Incremental Renaming" })
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
-  vim.diagnostic.goto_next()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, opts)
+
+keymap.set("n", "<C-k>", function()
+  vim.diagnostic.jump({ count = -1, float = true })
 end, opts)
