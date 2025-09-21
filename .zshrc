@@ -24,11 +24,6 @@ export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# Initialize oh-my-posh after PATH is set
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-    eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/tokyonight_storm.omp.json)"
-fi
-
 # Fuzzy Finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -53,3 +48,5 @@ export PATH="$HOME/.config/tmux/scripts:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+eval "$(starship init zsh)"
