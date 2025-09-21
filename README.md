@@ -3,17 +3,17 @@
 This Repo contains my dotfiles like my nvim setup, tmux configs and more.
 
 ## Requirements
-Make sure you have the following installed on your systen
+Make sure you have the following installed on your system
 
-### oh-my-zsh & oh-my-posh
+### oh-my-zsh & starship
 ```
 zsh --version
 oh-my-posh --version
 ```
 if not installed yet, install it:
 ```
-brew install oh-my-posh
 brew install zsh
+brew install starship
 ```
 
 ### Git
@@ -33,11 +33,7 @@ brew install ripgreg
 ```
 
 # Additional Configurations (DO BEFORE STOW)
-## Raycast
-Download and install raycast from the official website.
-Then go to Raycast Settings -> Account and login to your account (with GitHub). After that enable Cloud Sync to get all synced settings, shortcuts, theme and more.
-
-## Nerd Font
+## Nerd Font (wezterm)
 To use Wezterm properly, you need to install the BlexMono Nerd Font. You can do this with the following command: 
 ```
 brew install --cask font-blex-mono-nerd-font
