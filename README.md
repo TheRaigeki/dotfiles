@@ -34,9 +34,9 @@ brew install ripgreg
 
 # Additional Configurations (DO BEFORE STOW)
 ## Nerd Font (wezterm)
-To use Wezterm properly, you need to install the BlexMono Nerd Font. You can do this with the following command: 
+To use Wezterm properly, you need to install the JetBrainsMono Nerd Font. You can do this with the following command: 
 ```
-brew install --cask font-blex-mono-nerd-font
+brew install font-jetbrains-mono-nerd-font
 ```
 
 ## Install Angular CLI
