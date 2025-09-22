@@ -54,3 +54,10 @@ end, opts)
 keymap.set("n", "<C-k>", function()
   vim.diagnostic.jump({ count = -1, float = true })
 end, opts)
+
+-- Java
+keymap.set("n", "<leader>jtc", ":JavaTestRunCurrentClass<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>jtm", ":JavaTestRunCurrentMethod<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>jdc", ":JavaTestDebugCurrentClass<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>jdm", ":JavaTestDebugCurrentMethod<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>jtr", ":JavaTestViewLastReport<CR>", { noremap = true, silent = true })

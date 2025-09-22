@@ -20,10 +20,4 @@ return {
       },
     },
   },
-
-  vim.keymap.set("n", "<leader>jtc", ":JavaTestRunCurrentClass<CR>", { noremap = true, silent = true }),
-  vim.keymap.set("n", "<leader>jtm", ":JavaTestRunCurrentMethod<CR>", { noremap = true, silent = true }),
-  vim.keymap.set("n", "<leader>jdc", ":JavaTestDebugCurrentClass<CR>", { noremap = true, silent = true }),
-  vim.keymap.set("n", "<leader>jdm", ":JavaTestDebugCurrentMethod<CR>", { noremap = true, silent = true }),
-  vim.keymap.set("n", "<leader>jtr", ":JavaTestViewLastReport<CR>", { noremap = true, silent = true }),
 }
