@@ -1,44 +1,29 @@
-# Base-Path
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+# Detect OS
+case "$(uname -s)" in
+  Darwin)   # macOS
+    export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+    export JAVA_HOME=$(/usr/libexec/java_home)
+    export ANDROID_HOME=$HOME/Library/Android/sdk
+    export PNPM_HOME="$HOME/Library/pnpm"
+    ;;
+  Linux)
+    export JAVA_HOME=/usr/lib/jvm/default
+    export ANDROID_HOME=$HOME/Android/Sdk
+    export PNPM_HOME="$HOME/.local/share/pnpm"
+    ;;
+esac
 
-# Homebrew-Paths
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=/opt/homebrew/sbin:$PATH
+# Shared PATHs (work on both)
+export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
+export PATH="$HOME/.config/tmux/scripts:$PATH"
+export PATH="/opt/apache-maven/bin:$PATH"
 
-# Export Java and Android-SDK for Android Development
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$JAVA_HOME/bin:$PATH
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH="$ANDROID_HOME/emulator:$PATH"
-export PATH="$PATH:/Library/Android/sdk/platform-tools"
-
-#Maven
-export PATH=/opt/apache-maven/bin:$PATH
-
-# Fuzzy Finder
-alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
-
-# User configuration
-export LANG=en_US.UTF-8
+# Aliases
 alias lg='lazygit'
 alias vim='nvim'
 alias ls='eza -lh --group-directories-first --icons=auto'
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
-# pnpm
-export PNPM_HOME="/Users/robin/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-# TMUX scripts and custom commands
-export PATH="$HOME/.config/tmux/scripts:$PATH"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
+# Extras
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 eval "$(starship init zsh)"
