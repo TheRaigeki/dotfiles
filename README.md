@@ -16,6 +16,12 @@ brew install zsh
 brew install starship
 ```
 
+### eza
+You need to install this too, in order to get the icons and beautiful colored text when doing ls in your terminal
+```
+brew install eza
+```
+
 ### Git
 ```
 brew install git
