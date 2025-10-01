@@ -1,3 +1,8 @@
+# Important: needed because of such things like angular completion
+[[ -n "$ZSH_VERSION" && $- == *i* ]] || return
+autoload -Uz compinit
+compinit
+
 # Detect OS
 case "$(uname -s)" in
   Darwin)   # macOS
