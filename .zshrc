@@ -1,9 +1,6 @@
 # Base-Path
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
-# Path to my oh-my-zsh installation
-export ZSH="$HOME/.oh-my-zsh"
-
 # Homebrew-Paths
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
@@ -17,12 +14,6 @@ export PATH="$PATH:/Library/Android/sdk/platform-tools"
 
 #Maven
 export PATH=/opt/apache-maven/bin:$PATH
-
-# OpenJDK 17
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-
-# Load oh-my-zsh
-source $ZSH/oh-my-zsh.sh
 
 # Fuzzy Finder
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
