@@ -88,13 +88,21 @@ git clone https://github.com/RobinRuf/dotfiles.git
 cd dotfiles
 ```
 Then use GNU Stow to create symlinks.
+**NEVER DO:**
 ```
 stow .
 ```
+This will tell stow to create symlinks from all top-level folders directly into $HOME, which will give you i.e. ~/nvim/.config/nvim/...
 
-This will create references in the equivalent directories in your $Homne-Directory like in the dotfiles directory.
+**CORRECT WAY:**
+```
+stow nvim
+stow terminal
+stow zsh
+```
+Stow each package name by itself! This way, you will get ~/.config/nvim if you do stow nvim!
 
-NOTE: If you ever want to remove all symlinks, use the -D flag like so: `stow -D .` in your dotfiles folder.
+NOTE: If you ever want to remove a symlinks, use the -D flag like so: `stow -D nvim` in your dotfiles folder.
 
 ## Final Checks & Configurations
 
