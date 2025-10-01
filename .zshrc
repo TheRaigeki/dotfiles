@@ -25,12 +25,13 @@ export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 source $ZSH/oh-my-zsh.sh
 
 # Fuzzy Finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
 # User configuration
 export LANG=en_US.UTF-8
 alias lg='lazygit'
 alias vim='nvim'
+alias ls='eza -lh --group-directories-first --icons=auto'
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
