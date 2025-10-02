@@ -30,7 +30,9 @@ alias vim='nvim'
 alias ls='eza -lh --group-directories-first --icons=auto'
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+if command -v ng >/dev/null 2>&1; then
+    source <(ng completion script)
+fi
 
 # Extras
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
