@@ -29,6 +29,9 @@ alias lg='lazygit'
 alias vim='nvim'
 alias ls='eza -lh --group-directories-first --icons=auto'
 
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
 # Extras
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 eval "$(starship init zsh)"
