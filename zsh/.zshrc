@@ -28,6 +28,7 @@ export PATH="/opt/apache-maven/bin:$PATH"
 alias lg='lazygit'
 alias vim='nvim'
 alias ls='eza -lh --group-directories-first --icons=auto'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}' --preview-window=right:60%:wrap"
 
 # Load Angular CLI autocompletion.
 if command -v ng >/dev/null 2>&1; then
