@@ -1,0 +1,9 @@
+theme = TokyoNight
+background = 000000
+background-opacity = 0.9
+macos-titlebar-style = hidden
+macos-window-buttons = hidden
+macos-titlebar-proxy-icon = hidden
+
+shell-integration-features = no-cursor,no-sudo,no-title
+gtk-titlebar = false
