@@ -5,6 +5,12 @@ This Repo contains my dotfiles like my nvim setup, tmux configs and more.
 ## Requirements
 Make sure you have the following installed on your system
 
+### Ghostty Terminal Emulator
+Download it from the website or via homebrew:
+```
+brew install --cask ghostty
+```
+
 ### oh-my-zsh & starship
 ```
 zsh --version
@@ -38,9 +44,15 @@ brew install stow
 brew install ripgreg
 ```
 
+### bat
+Necessary for the detailed fzf command
+```
+brew install bat
+```
+
 # Additional Configurations (DO BEFORE STOW)
-## Nerd Font (wezterm)
-To use Wezterm properly, you need to install the JetBrainsMono Nerd Font. You can do this with the following command: 
+## Nerd Font (ghostty)
+To use ghostty properly, you need to install the JetBrainsMono Nerd Font. You can do this with the following command: 
 ```
 brew install font-jetbrains-mono-nerd-font
 ```
