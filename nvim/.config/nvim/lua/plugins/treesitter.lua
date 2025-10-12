@@ -27,6 +27,11 @@ return {
         "typescript",
         "yaml",
       },
+      -- highlight
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
       -- HTML autopairs
       autotag = {
         enable = true,
