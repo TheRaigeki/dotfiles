@@ -138,6 +138,15 @@ return {
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
         winblend = 0,
+        -- files, which will be ignored in file search, live grep, ...
+        file_ignore_patterns = {
+          "^.git/",
+          "^.idea/",
+          "^.vscode/",
+          "^.angular/",
+          "node_modules/",
+          "%.git/",
+        },
         mappings = {
           n = {},
         },
