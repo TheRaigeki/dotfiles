@@ -48,8 +48,8 @@ return {
           hl["@lsp.mod.unused"]  = { fg = c.comment, italic = true, strikethrough = false }
           hl.DiagnosticUnnecessary = { fg = c.comment, italic = true, strikethrough = false }
 
-          -- visual selection (if highlight color is too hard to see, uncomment the line below)
-          -- hl.Visual = { fg = "NONE", bg = "#33467C" }
+          -- visual selection (jsut because the highlightting color is partially hard to see with a transparent terminal)
+          hl.Visual = { fg = "NONE", bg = "#33467C" }
         end,
       }
     end,
