@@ -28,6 +28,7 @@ return {
         "yaml",
         "json",
         "jsonc",
+        "angular",
       },
       -- HTML autopairs
       autotag = {

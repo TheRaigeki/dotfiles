@@ -12,7 +12,8 @@ return {
         "typescript-language-server",
         "css-lsp",
         "rust-analyzer",
-        "yaml-language-server"
+        "yaml-language-server",
+        "angular-language-server",
       })
     end,
   },

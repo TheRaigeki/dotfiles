@@ -33,3 +33,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.autoindent = true
   end,
 })
+
+-- set correct lsp for angular template html files
+vim.filetype.add({
+  pattern = {
+    ['.*%.component%.html'] = 'html.angular',
+  },
+})
