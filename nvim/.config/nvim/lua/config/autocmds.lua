@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "css", "scss", "html", "json", "yaml", "toml", "graphql",
     "tsx", "jsx", "typescript", "typescriptreact", "ts",
     "javascript", "javascriptreact", "js", "svelte",
-    "sql", "query", "md", "markdown", "sh", "bash", "lua"
+    "sql", "query", "md", "markdown", "sh", "bash"
   },
   callback = function()
     vim.bo.shiftwidth = 2
@@ -33,4 +33,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.autoindent = true
   end,
 })
+
+-- vim.filetype.add({
+--   pattern = {
+--     ['.*%.component%.html'] = 'html.angular',
+--   },
+-- })
 

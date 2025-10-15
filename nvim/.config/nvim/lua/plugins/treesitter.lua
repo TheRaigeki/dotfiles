@@ -1,10 +1,12 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    main = "nvim-treesitter.configs",
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
     opts = {
       ensure_installed = {
         "html",
-        "css",
         "css",
         "gitignore",
         "go",
@@ -30,24 +32,10 @@ return {
         "jsonc",
         "angular",
       },
-      -- HTML autopairs
-      autotag = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-      },
+      highlight = { enable = true },
+      indent = { enable = true },
+      autotag = { enable = true }, -- HTML autotags
+      auto_install = true,         -- installs missing parsers when open a buffer
     },
-    config = function(_, opts)
-      require("nvim-treesitter").setup(opts)
-
-      -- MDX
-      vim.filetype.add({
-        extension = {
-          mdx = "mdx",
-        },
-      })
-      vim.treesitter.language.register("markdown", "mdx")
-    end,
   },
 }
