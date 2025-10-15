@@ -1,3 +1,4 @@
+-- auto pairs only for (), [], {}
 return {
   {
     'windwp/nvim-autopairs',
