@@ -33,10 +33,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.autoindent = true
   end,
 })
-
--- vim.filetype.add({
---   pattern = {
---     ['.*%.component%.html'] = 'html.angular',
---   },
--- })
-
