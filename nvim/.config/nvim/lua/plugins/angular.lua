@@ -2,6 +2,7 @@ return {
     -- toggle file switch between component.html and component.ts files
     {
         "neovim/nvim-lspconfig",
+        event = "VeryLazy",
         keys = {
             {
                 "<leader>aa",
