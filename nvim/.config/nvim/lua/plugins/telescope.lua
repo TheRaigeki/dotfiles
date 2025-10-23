@@ -142,7 +142,9 @@ return {
                     "-g", "!.git/**",
                     "-g", "!*.a",
                     "-g", "!*.o",
-                    "-g", "!package-lock.json",
+                    "-g", "!*-lock.json",
+                    "-g", "!.cargo",
+                    "-g", "!.lock",
                 }
             end
 
