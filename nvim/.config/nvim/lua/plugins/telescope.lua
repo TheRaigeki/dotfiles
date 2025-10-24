@@ -135,6 +135,7 @@ return {
                 return {
                     "-g", "!node_modules/**",
                     "-g", "!build/**",
+                    "-g", "!.vscode/**",
                     "-g", "!target/**",
                     "-g", "!venv/**",
                     "-g", "!.venv/**",

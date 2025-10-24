@@ -5,6 +5,7 @@ return {
         opts = function(_, opts)
             vim.list_extend(opts.ensure_installed, {
                 "stylua",
+                "html-lsp",
                 'dcm',
                 "selene",
                 "luacheck",
@@ -216,7 +217,7 @@ return {
                     root_dir = function(...)
                         return require("lspconfig.util").root_pattern('angular.json', 'project.json')(...)
                     end,
-                    filetypes = { 'typescript', 'html', 'typescripthtml', 'typescript.tsx' },
+                    filetypes = { 'typescript', 'html', 'typescripthtml', 'htmlangular' },
                 },
             },
             setup = {
@@ -232,18 +233,17 @@ return {
                 end,
             },
         },
-    },
-
-    {
-        "neovim/nvim-lspconfig",
-        opts = function(_, opts)
-            LazyVim.extend(opts.servers.tsserver, "settings.tsserver.globalPlugins", {
-                {
-                    name = "@angular/language-server",
-                    location = LazyVim.get_pkg_path("angular-language-server", "/node_modules/@angular/language-server"),
-                    enableForWorkspaceTypeScriptVersions = false,
-                },
-            })
-        end,
+        {
+            "neovim/nvim-lspconfig",
+            opts = function(_, opts)
+                LazyVim.extend(opts.servers.tsserver, "settings.tsserver.globalPlugins", {
+                    {
+                        name = "@angular/language-server",
+                        location = LazyVim.get_pkg_path("angular-language-server", "/node_modules/@angular/language-server"),
+                        enableForWorkspaceTypeScriptVersions = false,
+                    },
+                })
+            end,
+        },
     },
 }

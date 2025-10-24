@@ -33,3 +33,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.autoindent = true
   end,
 })
+
+-- force htmlangular to be html, so that html lsp works in angular component template files
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = {"*.component.html", "*.template.html"},
+    callback = function()
+        vim.bo.filetype = "html"
+    end,
+})
