@@ -42,9 +42,17 @@ keymap.set("n", "<C-c><C-p>", ":cprev<CR>", { noremap = true, silent = true })
 keymap.set("n", "<C-c><C-c>", ":cclose<CR>", { noremap = true, silent = true })
 keymap.set("n", "<C-c><C-o>", ":copen<CR>", { noremap = true, silent = true })
 
-keymap.set("n", "<leader>r", function()
-  return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true, desc = "Incremental Renaming" })
+-- rename
+vim.keymap.set("n", "<leader>r", function()
+  vim.lsp.buf.rename(nil, {
+    on_success = function()
+      vim.defer_fn(function()
+        vim.cmd("silent! wa")
+        vim.notify("Saved all renamed files ✓", vim.log.levels.INFO)
+      end, 100)
+    end
+  })
+end, { desc = "LSP Rename + Auto-save" })
 
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
