@@ -25,6 +25,15 @@ return {
             notifier = {
                 enabled = true,
                 timeout = 3000,
+                filter = function(notif)
+                    -- suppress unnecessary no information available message
+                    local msg = notif.msg or notif.message or ""
+                    if msg:find("No information available")
+                         then
+                        return false
+                    end
+                    return true
+                end,
             },
             quickfile = { enabled = true },
             statuscolumn = { enabled = true },
