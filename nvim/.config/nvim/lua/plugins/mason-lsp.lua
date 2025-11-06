@@ -213,6 +213,7 @@ return {
                         },
                     },
                 },
+                -- https://v17.angular.io/guide/language-service
                 angularls = {
                     cmd = {
                         "ngserver",
@@ -234,7 +235,7 @@ return {
                     require("lspconfig").lua_ls.setup { capabilities = capabilities }
                 end,
                 angularls = function()
-                    Snacks.util.lsp.on(function(client_id)
+                    require("snacks").util.lsp.on(function(client_id)
                         local client = vim.lsp.get_client_by_id(client_id)
                         if client and client.name == "angularls" then
                             -- HACK: Deactivate angulars rename capability to prevent double rename prompts
