@@ -214,6 +214,14 @@ return {
                     },
                 },
                 angularls = {
+                    cmd = {
+                        "ngserver",
+                        "--stdio",
+                        "--tsProbeLocations",
+                        vim.fn.expand("~/.local/share/nvim/mason/packages/angular-language-server/node_modules"),
+                        "--ngProbeLocations",
+                        vim.fn.expand("~/.local/share/nvim/mason/packages/angular-language-server/node_modules"),
+                    },
                     root_dir = function(...)
                         return require("lspconfig.util").root_pattern('angular.json', 'project.json')(...)
                     end,
@@ -226,24 +234,15 @@ return {
                     require("lspconfig").lua_ls.setup { capabilities = capabilities }
                 end,
                 angularls = function()
-                    LazyVim.lsp.on_attach(function(client)
-                        -- HACK: Deactivate angulars rename capability to prevent double rename prompts
-                        client.server_capabilities.renameProvider = false
-                    end, "angularls")
+                    Snacks.util.lsp.on(function(client_id)
+                        local client = vim.lsp.get_client_by_id(client_id)
+                        if client and client.name == "angularls" then
+                            -- HACK: Deactivate angulars rename capability to prevent double rename prompts
+                            client.server_capabilities.renameProvider = false
+                        end
+                    end)
                 end,
             },
-        },
-        {
-            "neovim/nvim-lspconfig",
-            opts = function(_, opts)
-                LazyVim.extend(opts.servers.tsserver, "settings.tsserver.globalPlugins", {
-                    {
-                        name = "@angular/language-server",
-                        location = LazyVim.get_pkg_path("angular-language-server", "/node_modules/@angular/language-server"),
-                        enableForWorkspaceTypeScriptVersions = false,
-                    },
-                })
-            end,
         },
     },
 }
