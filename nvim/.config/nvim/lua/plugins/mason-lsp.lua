@@ -219,14 +219,21 @@ return {
                         "ngserver",
                         "--stdio",
                         "--tsProbeLocations",
-                        vim.fn.expand("~/.local/share/nvim/mason/packages/angular-language-server/node_modules"),
+                        vim.fn.expand("~/.local/share/nvim/mason/packages/angular-language-server/node_modules/typescript/lib"),
                         "--ngProbeLocations",
-                        vim.fn.expand("~/.local/share/nvim/mason/packages/angular-language-server/node_modules"),
+                        vim.fn.expand("~/.local/share/nvim/mason/packages/angular-language-server/node_modules/@angular/language-server/bin"),
                     },
                     root_dir = function(...)
                         return require("lspconfig.util").root_pattern('angular.json', 'project.json')(...)
                     end,
-                    filetypes = { 'typescript', 'html', 'typescripthtml', 'htmlangular' },
+                    filetypes = { 'typescript', 'html' },
+                    init_options = {
+                        trace = {
+                            server = {
+                                verbosity = "verbose"
+                            }
+                        }
+                    },
                 },
             },
             setup = {
