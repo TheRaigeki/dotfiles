@@ -44,7 +44,7 @@ return {
                         return require("lspconfig.util").root_pattern(".git")(...)
                     end,
                 },
-                tsserver = {
+                vtsls = {
                     root_dir = function(...)
                         return require("lspconfig.util").root_pattern(".git", "package.json", "tsconfig.json", "jsconfig.json", ".eslint.json", ".luarc.json")(...)
                     end,
@@ -213,28 +213,8 @@ return {
                         },
                     },
                 },
-                -- https://v17.angular.io/guide/language-service
-                angularls = {
-                    cmd = {
-                        "ngserver",
-                        "--stdio",
-                        "--tsProbeLocations",
-                        vim.fn.expand("~/.local/share/nvim/mason/packages/angular-language-server/node_modules/typescript/lib"),
-                        "--ngProbeLocations",
-                        vim.fn.expand("~/.local/share/nvim/mason/packages/angular-language-server/node_modules/@angular/language-server/bin"),
-                    },
-                    root_dir = function(...)
-                        return require("lspconfig.util").root_pattern('angular.json', 'project.json')(...)
-                    end,
-                    filetypes = { 'typescript', 'html' },
-                    init_options = {
-                        trace = {
-                            server = {
-                                verbosity = "verbose"
-                            }
-                        }
-                    },
-                },
+                -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/angularls.lua#L66
+                angularls = require("plugins.lsps.angularls"),
             },
             setup = {
                 lua_ls = function(_, opts)
