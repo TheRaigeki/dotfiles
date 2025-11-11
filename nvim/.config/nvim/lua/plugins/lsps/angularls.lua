@@ -23,15 +23,17 @@ return {
     local root_dir = config.root or fn.getcwd()
     
     -- Hardcode known paths - no searching needed!
+    local ngserver_path = fn.stdpath('data') .. '/mason/packages/angular-language-server/node_modules/@angular/language-server/bin/ngserver'
     local mason_node_modules = fn.stdpath('data') .. '/mason/packages/angular-language-server/node_modules'
     local project_node_modules = root_dir .. '/node_modules'
     
     -- Just concatenate the two paths - project first (for version match), then Mason (fallback)
-    local ts_probe = project_node_modules .. ',' .. mason_node_modules
+    local ts_probe = project_node_modules .. ',' .. mason_node_modules .. '/@angular/language-server/node_modules'
     local ng_probe = project_node_modules .. ',' .. mason_node_modules .. '/@angular/language-server/node_modules'
     
     local cmd = {
-      'ngserver',
+      'node',
+      ngserver_path,
       '--stdio',
       '--tsProbeLocations',
       ts_probe,
