@@ -44,7 +44,7 @@ return {
                         return require("lspconfig.util").root_pattern(".git")(...)
                     end,
                 },
-                vtsls = {
+                tsserver = {
                     root_dir = function(...)
                         return require("lspconfig.util").root_pattern(".git", "package.json", "tsconfig.json", "jsconfig.json", ".eslint.json", ".luarc.json")(...)
                     end,
