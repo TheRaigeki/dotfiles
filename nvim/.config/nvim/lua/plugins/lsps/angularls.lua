@@ -22,7 +22,7 @@ return {
   cmd = function(dispatchers, config)
     local root_dir = config.root or fn.getcwd()
     
-    -- Hardcode known paths - no searching needed!
+    -- Hardcode known paths, to prevent expensive fs operations
     local ngserver_path = fn.stdpath('data') .. '/mason/packages/angular-language-server/node_modules/@angular/language-server/bin/ngserver'
     local mason_node_modules = fn.stdpath('data') .. '/mason/packages/angular-language-server/node_modules'
     local project_node_modules = root_dir .. '/node_modules'
