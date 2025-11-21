@@ -61,7 +61,7 @@ case "$PWD" in
     [ -f backend/pom.xml ]  || { echo "❌ '$DIR/backend/pom.xml' not found - necessary for starting the compiled backend"; exit 1; }
 
     echo "⚙️ 1/3 compile"
-    mvn clean compile \
+    mvn -DskipTests clean package \
       || { echo "❌ compile failed"; exit 1; }
 
     echo "✨  2/3 type-generator"
@@ -69,12 +69,7 @@ case "$PWD" in
       || { echo "❌ type-generator failed"; exit 1; }
 
     echo "🚀  3/3 start backend"
-    mvn -f backend/pom.xml \
-      -DskipTests \
-      -Dspring-boot.run.main-class=ch.adibilis.BaseApplication \
-      -Dspring-boot.run.jvmArguments="--enable-preview" \
-      spring-boot:run \
+    java -jar backend/target/backend.jar \
       || { echo "❌ starting compiled backend failed"; exit 1; }
   )
 }
-
