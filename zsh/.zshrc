@@ -69,7 +69,7 @@ case "$PWD" in
       || { echo "❌ type-generator failed"; exit 1; }
 
     echo "🚀  3/3 start backend"
-    java -jar backend/target/backend.jar
+    java -jar backend/target/backend.jar \
       || { echo "❌ starting compiled backend failed"; exit 1; }
   )
 }
