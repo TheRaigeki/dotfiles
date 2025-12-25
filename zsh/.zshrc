@@ -22,7 +22,6 @@ esac
 export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
 export PATH="$HOME/.config/tmux/scripts:$PATH"
-export PATH="/opt/apache-maven/bin:$PATH"
 
 # Aliases
 alias lg='lazygit'

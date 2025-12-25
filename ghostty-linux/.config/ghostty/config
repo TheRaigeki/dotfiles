@@ -1,13 +1,11 @@
-# Dynamic theme colors
-config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
-# Or if not on Omarchy
-# theme = TokyoNight
+theme = TokyoNight
+# if not on Omarchy, uncomment line below
 # background-opacity = 0.9
 
 # Font
 font-family = "JetBrainsMono Nerd Font"
 font-style = Regular
-font-size = 9
+font-size = 11
 
 # Window
 window-padding-x = 14
