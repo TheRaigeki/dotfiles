@@ -15,6 +15,7 @@ case "$(uname -s)" in
     export JAVA_HOME=/usr/lib/jvm/default
     export ANDROID_HOME=$HOME/Android/Sdk
     export PNPM_HOME="$HOME/.local/share/pnpm"
+    export PATH="$HOME/.local/bin:$PATH"
     ;;
 esac
 
