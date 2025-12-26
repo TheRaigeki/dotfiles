@@ -3,6 +3,7 @@ set -euo pipefail
 
 PACKAGES=(
   "omarchy"
+  "starship"
   # more packages
 )
 
@@ -11,6 +12,7 @@ PACKAGES=(
 TARGETS=(
   ".config/hypr/monitors.conf"
   ".config/wireplumber/wireplumber.conf.d/51-disable-monitor-audio.conf"
+  ".config/starship.toml"
   # more files
 )
 
