@@ -11,6 +11,7 @@ PACKAGES=(
 # Add/remove paths here as needed.
 TARGETS=(
   ".config/hypr/monitors.conf"
+  ".config/hypr/bindings.conf"
   ".config/wireplumber/wireplumber.conf.d/51-disable-monitor-audio.conf"
   ".config/starship.toml"
   # more files
