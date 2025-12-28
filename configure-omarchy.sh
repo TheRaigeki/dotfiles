@@ -96,4 +96,35 @@ for pkg in "${PACKAGES[@]}"; do
   run stow -d "$DOTFILES_DIR" -t "$TARGET_HOME" "$pkg"
 done
 
+# --- 5) Reload Hyprland ------------------------------------------------------
+reload_hyprland() {
+  local user="${SUDO_USER:-$USER}"
+  local uid
+  uid="$(id -u "$user")"
+  local xdg_runtime="/run/user/$uid"
+
+  # If we're not in a Hyprland session, don't fail the script.
+  command -v hyprctl >/dev/null 2>&1 || { warn "hyprctl not found; skip Hyprland reload"; return 0; }
+  [[ -d "$xdg_runtime" ]] || { warn "No $xdg_runtime; skip Hyprland reload"; return 0; }
+
+  # If sudo stripped HYPRLAND_INSTANCE_SIGNATURE, detect it from runtime dir.
+  local sig="${HYPRLAND_INSTANCE_SIGNATURE:-}"
+  if [[ -z "$sig" && -d "$xdg_runtime/hypr" ]]; then
+    sig="$(ls -1 "$xdg_runtime/hypr" 2>/dev/null | head -n 1 || true)"
+  fi
+
+  if [[ -z "$sig" ]]; then
+    warn "Could not determine HYPRLAND_INSTANCE_SIGNATURE; skip Hyprland reload"
+    return 0
+  fi
+
+  info "Reloading Hyprland config..."
+  run sudo -u "$user" env \
+    XDG_RUNTIME_DIR="$xdg_runtime" \
+    HYPRLAND_INSTANCE_SIGNATURE="$sig" \
+    hyprctl reload || warn "Hyprland reload failed (not in session?)"
+}
+
+reload_hyprland
+
 info "Done."
