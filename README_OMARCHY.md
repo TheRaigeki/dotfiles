@@ -1,0 +1,129 @@
+# Install dotfiles for Omarchy
+
+## Configure Omarchy
+
+There are several things that has to be configured on a freshly installed Omarchy-System.\
+Run the configuration script to ensure the most hard and annoying stuff will be done automatically:
+
+```
+cd dotfiles
+./configure-omarchy.sh
+```
+
+## Install Requirements
+
+### Stow
+
+```bash
+sudo pacman -S --needed stow
+```
+
+### Tmux
+
+```bash
+sudo pacman -S --needed tmux
+```
+
+### Ghossty
+
+```bash
+sudo pacman -S --needed ghossty
+```
+
+If pacman cannot find the package, then install the AUR:
+
+```bash
+git clone https://aur.archlinux.org/ghostty.git
+cd ghostty
+makepkg -si
+```
+
+### Zsh
+
+```bash
+sudo pacman -S --needed zsh
+```
+
+Make zsh the default:
+```bash
+chsh -s /bin/zsh
+```
+
+### Bat
+
+```bash
+sudo pacman -S --needed bat
+```
+
+### Angular CLI
+
+```bash
+sudo pacman -S --needed nodejs npm pnpm
+```
+
+```bash
+npm add -g @angular/cli
+```
+
+Check the version to ensure it is installed properly:
+```bash
+ng version
+```
+
+## Stow
+
+```bash
+git clone https://github.com/TheRaigeki/dotfiles.git
+cd dotfiles
+```
+
+Then use GNU Stow to create symlinks.
+**NEVER DO:**
+
+```bash
+stow .
+```
+
+This will tell stow to create symlinks from all top-level folders\
+directly into $HOME, which will give you i.e. ~/nvim/.config/nvim/...
+
+**CORRECT WAY:**
+
+```bash
+stow nvim
+stow terminal
+stow zsh
+```
+
+NOTE: If you ever want to remove a symlinks, use the -D flag like so:\
+`stow -D nvim` in your dotfiles folder.
+
+## Configurations
+
+### Nvim
+
+Grant Sudo Permissions for Nvim to prevent sudo conflicts
+
+```bash
+sudo chown -R $(whoami) ~/.local/share/nvim
+sudo chown -R $(whoami) ~/.config/nvim
+sudo chown -R $(whoami) ~/.cache/nvim
+```
+
+### Tmux
+
+```bash
+git clone https://github.com/tmux-plugins/tmp ~/.tmux/plugins/tmp
+```
+
+```bash
+chmod -x ~/.tmux/plugins/tmp
+```
+
+After that all, start tmux and type PREFIX + I to install all packages.
+Try PREFIX + o, if it does not open sessionx, try the following:
+
+```bash
+chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/tmuxinator.sh
+chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/sessionx.sh
+```
