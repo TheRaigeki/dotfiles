@@ -127,3 +127,26 @@ Try PREFIX + o, if it does not open sessionx, try the following:
 chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/tmuxinator.sh
 chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/sessionx.sh
 ```
+
+### Screen Sharing
+
+To enable screen sharing on Omarchy, you need to install the desktop-portal like this:
+
+```bash
+sudo pacman -S xdg-desktop-portal xdg-desktop-portal-hyprland
+```
+
+Then check, if the service is running properly:
+
+```bash
+systemctl --user status xdg-desktop-portal
+systemctl --user status xdg-desktop-portal-hyprland
+```
+
+In case it is not running, start it:
+
+```bash
+systemctl --user enable --now xdg-desktop-portal
+systemctl --user enable --now xdg-desktop-portal-hyprland
+```
+
