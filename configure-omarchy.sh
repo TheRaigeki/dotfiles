@@ -12,6 +12,8 @@ PACKAGES=(
 TARGETS=(
   ".config/hypr/monitors.conf"
   ".config/hypr/bindings.conf"
+  ".config/hypr/looknfeel.conf"
+  ".config/omarchy/branding/screensaver.txt"
   ".config/wireplumber/wireplumber.conf.d/51-disable-monitor-audio.conf"
   ".config/starship.toml"
   # more files

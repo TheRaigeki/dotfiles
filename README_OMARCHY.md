@@ -3,9 +3,10 @@
 ## Configure Omarchy
 
 There are several things that has to be configured on a freshly installed Omarchy-System.\
-Run the configuration script to ensure the most hard and annoying stuff will be done automatically:
+Run the configuration script to ensure the most hard and annoying stuff will be\
+done automatically:
 
-```
+```bash
 cd dotfiles
 ./configure-omarchy.sh
 ```
@@ -45,6 +46,7 @@ sudo pacman -S --needed zsh
 ```
 
 Make zsh the default:
+
 ```bash
 chsh -s /bin/zsh
 ```
@@ -66,11 +68,12 @@ npm add -g @angular/cli
 ```
 
 Check the version to ensure it is installed properly:
+
 ```bash
 ng version
 ```
 
-## Stow
+## Stow files
 
 ```bash
 git clone https://github.com/TheRaigeki/dotfiles.git
@@ -130,7 +133,8 @@ chmod +x ~/.config/tmux/plugins/tmux-sessionx/scripts/sessionx.sh
 
 ### Screen Sharing
 
-To enable screen sharing on Omarchy, you need to install the desktop-portal like this:
+To enable screen sharing on Omarchy, you need to install the desktop-portal\
+like this:
 
 ```bash
 sudo pacman -S xdg-desktop-portal xdg-desktop-portal-hyprland
@@ -150,3 +154,17 @@ systemctl --user enable --now xdg-desktop-portal
 systemctl --user enable --now xdg-desktop-portal-hyprland
 ```
 
+## ADDITIONAL MANUAL CONFIG CHANGES
+
+A few files cannot be copied into dotfiles, since it can change when changing\
+theme, font or enabling/disabling features like the fingerprint sensor.
+
+Set `rounding = 20` in `~/.config/hypr/hyprlock.conf`.
+
+In `~/.config/omarchy/current/theme/walker.css`, add:
+
+```css
+.box-wrapper {
+  border-radius: 10px;
+}
+```
