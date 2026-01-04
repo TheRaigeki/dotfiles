@@ -168,3 +168,9 @@ In `~/.config/omarchy/current/theme/walker.css`, add:
   border-radius: 10px;
 }
 ```
+
+Search for `--save-after-copy` in\
+`~/.local/share/omarchy/bin/omarchy-cmd-screenshot` - it should only appear once.\
+Delete this (only --save-after-copy) and leave everything else untouched.\
+This will change the behavior of screenshots.\
+If you copy the screenshot directly, it will not save into a file.
