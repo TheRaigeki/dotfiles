@@ -5,7 +5,7 @@ return {
         event = "VeryLazy",
         keys = {
             {
-                "<leader>aa",
+                "<leader>sf",
                 function()
                     local current_file = vim.fn.expand("%:p")
                     local filename = vim.fn.expand("%:t")
