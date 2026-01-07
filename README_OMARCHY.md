@@ -25,10 +25,10 @@ sudo pacman -S --needed stow
 sudo pacman -S --needed tmux
 ```
 
-### Ghossty
+### Ghostty
 
 ```bash
-sudo pacman -S --needed ghossty
+sudo pacman -S --needed ghostty
 ```
 
 If pacman cannot find the package, then install the AUR:
@@ -102,6 +102,20 @@ NOTE: If you ever want to remove a symlinks, use the -D flag like so:\
 `stow -D nvim` in your dotfiles folder.
 
 ## Configurations
+
+## Ghostty Terminal Error
+
+If you come across this error when typing `clear` in the terminal while using the ghostty terminal:
+
+**xterm-ghostty: unknown terminal type**
+
+Then you need to add this to your .bashrc or .zshrc (whichever you use) to support the color schema ghostty uses:
+
+```sh
+if [ "$TERM" = "xterm-ghostty" ]; then
+  export TERM=xterm-256color
+fi
+```
 
 ### Nvim
 
