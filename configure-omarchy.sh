@@ -14,6 +14,7 @@ TARGETS=(
   ".config/hypr/bindings.conf"
   ".config/hypr/looknfeel.conf"
   ".config/omarchy/branding/screensaver.txt"
+  ".config/omarchy/current/theme/walker.css"
   ".config/wireplumber/wireplumber.conf.d/51-disable-monitor-audio.conf"
   ".config/starship.toml"
   # more files

@@ -13,7 +13,8 @@ case "$(uname -s)" in
     ;;
   Linux)
     export JAVA_HOME=/usr/lib/jvm/default
-    export ANDROID_HOME=$HOME/Android/Sdk
+    export ANDROID_HOME=/opt/android-sdk
+    export ANDROID_AVD_HOME="$HOME/.config/.android/avd"
     export PNPM_HOME="$HOME/.local/share/pnpm"
     export PATH="$HOME/.local/bin:$PATH"
     ;;
@@ -21,7 +22,7 @@ esac
 
 # Shared PATHs (work on both)
 export PATH="$JAVA_HOME/bin:$PATH"
-export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
 export PATH="$HOME/.config/tmux/scripts:$PATH"
 
 # Aliases
