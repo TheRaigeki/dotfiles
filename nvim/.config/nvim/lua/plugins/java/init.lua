@@ -9,7 +9,13 @@ return {
       require("java").setup({
       })
 
+      local lombok_jar = vim.fn.expand("~/.local/share/nvim/mason/packages/jdtls/lombok.jar")
+
       require("lspconfig").jdtls.setup({
+        cmd = {
+          "jdtls",
+          "--jvm-arg=-javaagent:" .. lombok_jar,
+        },
       })
     end,
   }
