@@ -24,6 +24,7 @@ esac
 export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
 export PATH="$HOME/.config/tmux/scripts:$PATH"
+export PATH="$PNPM_HOME:$PATH"
 
 # Aliases
 alias lg='lazygit'
@@ -58,7 +59,6 @@ case "$PWD" in
 
   (
     # Sanity checks
-    [ -f pom.xml ]     || { echo "❌ '$DIR/pom.xml' not found - necessary for type-generator"; exit 1; }
     [ -f backend/pom.xml ]  || { echo "❌ '$DIR/backend/pom.xml' not found - necessary for starting the compiled backend"; exit 1; }
 
     echo "⚙️ 1/3 compile"
@@ -72,5 +72,9 @@ case "$PWD" in
     echo "🚀  3/3 start backend"
     java -jar backend/target/backend.jar \
       || { echo "❌ starting compiled backend failed"; exit 1; }
+    echo "🔍 Looking for: target/$(basename "$PWD")*.jar"
+    echo "🔍 Resolved to: $jar"
+    [ -f "$jar" ] || { echo "❌ No matching jar found in target/"; exit 1; }
+    java -jar "$jar"
   )
 }
