@@ -13,6 +13,8 @@ TARGETS=(
   ".config/hypr/monitors.conf"
   ".config/hypr/bindings.conf"
   ".config/hypr/looknfeel.conf"
+  ".config/waybar/config.jsonc"
+  ".config/waybar/style.css"
   ".config/omarchy/branding/screensaver.txt"
   ".config/omarchy/current/theme/walker.css"
   ".config/wireplumber/wireplumber.conf.d/51-disable-monitor-audio.conf"
