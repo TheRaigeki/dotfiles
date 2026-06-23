@@ -74,3 +74,5 @@ case "$PWD" in
     java -jar "$jar"
   )
 }
+
+. "$HOME/.local/share/../bin/env"
