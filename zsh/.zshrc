@@ -75,4 +75,6 @@ case "$PWD" in
   )
 }
 
-. "$HOME/.local/share/../bin/env"
+eval "$(mise activate zsh)"
+export GITHUB_ACTOR=TheRaigeki
+export GITHUB_TOKEN=$(gh auth token)
