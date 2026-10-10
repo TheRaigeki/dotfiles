@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Power menu via Walker (Super+Escape)
+choice=$(printf '%s\n' \
+  "󰌾  Lock" \
+  "󰤄  Suspend" \
+  "󰍃  Log out" \
+  "󰜉  Restart" \
+  "󰐥  Shut down" |
+  walker --dmenu --placeholder "System" --width 320 --height 300)
+
+case "$choice" in
+  *Lock)       loginctl lock-session ;;
+  *Suspend)    systemctl suspend ;;
+  *"Log out")  uwsm stop ;;
+  *Restart)    systemctl reboot ;;
+  *"Shut down") systemctl poweroff ;;
+esac

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Opens a terminal tool as a floating window below the waybar.
+# Clicking the same icon again closes it.
+# Usage: waybar-popup <name> <command...>
+name="$1"; shift
+class="popup.$name"
+addr=$(hyprctl clients -j | jq -r --arg c "$class" '.[] | select(.class == $c) | .address' | head -n1)
+if [[ -n "$addr" ]]; then
+  hyprctl dispatch "hl.dsp.window.close({ window = \"address:$addr\" })" >/dev/null
+else
+  exec ghostty --class="$class" -e "$@"
+fi
