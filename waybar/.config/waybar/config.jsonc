@@ -17,7 +17,8 @@
     "network",
     "pulseaudio",
     "cpu",
-    "battery"
+    "battery",
+    "custom/power"
   ],
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -151,7 +152,7 @@
     ]
   },
   "custom/expand-icon": {
-    "format": " ",
+    "format": "",
     "tooltip": false
   },
   "tray": {
@@ -163,5 +164,10 @@
     "on-click": "walker",
     "on-click-right": "ghostty",
     "tooltip-format": "Apps\n\nSuper + Space"
+  },
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "$HOME/.local/bin/powermenu",
+    "tooltip-format": "Power menu\n\nSuper + Escape"
   }
 }

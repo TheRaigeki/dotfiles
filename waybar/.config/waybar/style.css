@@ -40,6 +40,7 @@
 #cpu,
 #battery,
 #pulseaudio,
+#custom-power,
 #custom-arch {
   min-width: 12px;
   margin: 0 7.5px;
@@ -73,3 +74,7 @@ tooltip {
   opacity: 0;
 }
 
+
+#custom-power {
+  margin-right: 2px;
+}
