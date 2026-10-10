@@ -8,9 +8,19 @@ choice=$(printf '%s\n' \
   "󰐥  Shut down" |
   walker --dmenu --placeholder "System" --width 320 --height 300)
 
+# Let the menu finish closing first, otherwise the lock screen's screenshot
+# still contains it and it fades out visibly after unlocking
+wait_closed() {
+  for _ in {1..20}; do
+    hyprctl layers -j | grep -q '"namespace": "walker' || break
+    sleep 0.05
+  done
+  sleep 0.2
+}
+
 case "$choice" in
-  *Lock)       loginctl lock-session ;;
-  *Suspend)    systemctl suspend ;;
+  *Lock)       wait_closed; loginctl lock-session ;;
+  *Suspend)    wait_closed; systemctl suspend ;;
   *"Log out")  uwsm stop ;;
   *Restart)    systemctl reboot ;;
   *"Shut down") systemctl poweroff ;;
