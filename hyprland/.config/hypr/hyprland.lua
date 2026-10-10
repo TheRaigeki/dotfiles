@@ -15,12 +15,22 @@
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
--- Laptop panel: 1920x1200 at 14", 1.25 instead of the automatic 1.5
+-- Laptop panel: 1920x1200 at 14", scale 16/15 (~1.0667) = 1800x1125 (valid steps: 1.0, 1.0667, 1.2, 1.25; automatic would be 1.5)
 hl.monitor({
     output   = "eDP-1",
     mode     = "preferred",
     position = "auto",
-    scale    = 1.25,
+    scale    = 16 / 15,
+    cm       = "edid", -- colour-correct using the panel's own primaries (small gamut, greenish white)
+})
+
+-- Home monitor: ASUS VG32VQ1B 32" 1440p, 144 Hz instead of the default 60 Hz, right of the laptop
+hl.monitor({
+    output   = "desc:ASUSTek COMPUTER INC ASUS VG32VQ1B 0x00015795",
+    mode     = "2560x1440@143.97",
+    position = "auto-right",
+    scale    = 1,
+    cm       = "edid", -- wide-gamut panel: Hyprland maps sRGB into the panel's gamut (monitor's own sRGB mode locks brightness)
 })
 
 -- All other monitors: automatic
@@ -158,7 +168,8 @@ hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}
 hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1}     } })
 
 -- Default springs
-hl.curve("easy",           { type = "spring", mass = 1, stiffness = 238.1191, dampening = 24.21279333 })
+-- dampening raised from 24.2 to the critical value 2*sqrt(mass*stiffness) = 30.86: smooth, no bounce
+hl.curve("easy",           { type = "spring", mass = 1, stiffness = 238.1191, dampening = 30.86 })
 
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "default" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
@@ -280,12 +291,17 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + T",     hl.dsp.exec_cmd(terminal),    { desc = "Terminal" })
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal),   { desc = "Terminal" })
+hl.bind(mainMod .. " + T",     hl.dsp.exec_cmd("$HOME/.local/bin/waybar-popup btop btop"), { desc = "Activity monitor (btop, floating)" })
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu),        { desc = "App launcher" })
 hl.bind(mainMod .. " + B",     hl.dsp.exec_cmd(browser),     { desc = "Browser" })
 hl.bind(mainMod .. " + E",     hl.dsp.exec_cmd(fileManager), { desc = "File manager" })
 hl.bind(mainMod .. " + W",     hl.dsp.window.close(),        { desc = "Close window" })
 hl.bind(mainMod .. " + F",     hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { desc = "Toggle fullscreen" })
+-- Screenshot (Omarchy script from ~/dotfiles/arch): select a region or click a window, then copy or save in Satty
+local screenshot = "OMARCHY_SCREENSHOT_DIR=$HOME/Pictures/Screenshots $HOME/.local/bin/screenshot"
+hl.bind("Print",                    hl.dsp.exec_cmd(screenshot), { desc = "Screenshot" })
+hl.bind("XF86SelectiveScreenshot",  hl.dsp.exec_cmd(screenshot), { desc = "Screenshot (ThinkPad key)" })
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("$HOME/.local/bin/powermenu"), { desc = "Power menu" })
 
 -- Super+Q: quit the whole app, i.e. close every window with the same class as the active one
@@ -311,6 +327,12 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
+-- Swap the active window with its neighbour with mainMod + SHIFT + arrow keys (like Omarchy)
+hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.swap({ direction = "l" }), { desc = "Swap window left" })
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "r" }), { desc = "Swap window right" })
+hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.swap({ direction = "u" }), { desc = "Swap window up" })
+hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.swap({ direction = "d" }), { desc = "Swap window down" })
+
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
@@ -332,12 +354,12 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
-hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
-hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("$HOME/.local/bin/osd volume up"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("$HOME/.local/bin/osd volume down"),      { locked = true, repeating = true })
+hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("$HOME/.local/bin/osd volume mute"),     { locked = true })
+hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("$HOME/.local/bin/osd mic mute"),   { locked = true })
+hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness up"),                  { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness down"),                  { locked = true, repeating = true })
 
 -- Requires playerctl
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
@@ -414,6 +436,7 @@ hl.window_rule({
 
 hl.on("hyprland.start", function ()
   hl.exec_cmd("uwsm app -- hypridle")
+  hl.exec_cmd("uwsm app -- swayosd-server")
   hl.exec_cmd("uwsm app -- walker --gapplication-service")
   hl.exec_cmd("uwsm app -- waybar")
   hl.exec_cmd("uwsm app -- mako")

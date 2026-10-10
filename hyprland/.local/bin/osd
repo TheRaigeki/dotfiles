@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# Media keys with an on-screen display (swayosd) and a click sound on volume changes.
+# Falls back to plain wpctl/brightnessctl while swayosd is not installed.
+# Usage: osd volume up|down|mute | osd mic mute | osd brightness up|down
+
+sound=/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+
+have_osd() {
+  command -v swayosd-client >/dev/null || return 1
+  pgrep -x swayosd-server >/dev/null && return 0
+  uwsm app -- swayosd-server >/dev/null 2>&1 &
+  sleep 0.3
+}
+
+click() {
+  wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && return
+  pkill -f "pw-play $sound" 2>/dev/null
+  pw-play "$sound" >/dev/null 2>&1 &
+}
+
+case "$1 $2" in
+  "volume up")
+    if have_osd; then swayosd-client --output-volume raise --max-volume 100
+    else wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+; fi
+    click ;;
+  "volume down")
+    if have_osd; then swayosd-client --output-volume lower
+    else wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; fi
+    click ;;
+  "volume mute")
+    if have_osd; then swayosd-client --output-volume mute-toggle
+    else wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; fi
+    click ;;
+  "mic mute")
+    if have_osd; then swayosd-client --input-volume mute-toggle
+    else wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; fi ;;
+  "brightness up")
+    if have_osd; then swayosd-client --brightness raise
+    else brightnessctl -e4 -n2 set 5%+; fi ;;
+  "brightness down")
+    if have_osd; then swayosd-client --brightness lower
+    else brightnessctl -e4 -n2 set 5%-; fi ;;
+  *) echo "usage: osd volume up|down|mute | osd mic mute | osd brightness up|down" >&2; exit 1 ;;
+esac
