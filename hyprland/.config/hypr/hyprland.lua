@@ -249,7 +249,7 @@ hl.config({
 
 hl.config({
     input = {
-        kb_layout  = "us",
+        kb_layout  = "us,ch", -- US primary, Swiss German secondary (Alt+Space)
         kb_variant = "",
         kb_model   = "",
         kb_options = "",
@@ -360,6 +360,7 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("$HOME/.local/bin/osd volume up"
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("$HOME/.local/bin/osd volume down"),      { locked = true, repeating = true , desc = "Volume down" })
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("$HOME/.local/bin/osd volume mute"),     { locked = true , desc = "Mute" })
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("$HOME/.local/bin/osd mic mute"),   { locked = true , desc = "Mute microphone" })
+hl.bind("ALT + SPACE", hl.dsp.exec_cmd("$HOME/.local/bin/osd layout"), { locked = true , desc = "Switch keyboard layout (US/CH)" })
 hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness up"),                  { locked = true, repeating = true , desc = "Brightness up" })
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness down"),                  { locked = true, repeating = true , desc = "Brightness down" })
 

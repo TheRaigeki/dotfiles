@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Media keys with an on-screen display (swayosd) and a click sound on volume changes.
 # Falls back to plain wpctl/brightnessctl while swayosd is not installed.
-# Usage: osd volume up|down|mute | osd mic mute | osd brightness up|down
+# Usage: osd volume up|down|mute | osd mic mute | osd brightness up|down | osd layout
 
 sound=/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 
@@ -40,5 +40,11 @@ case "$1 $2" in
   "brightness down")
     if have_osd; then swayosd-client --brightness lower
     else brightnessctl -e4 -n2 set 5%-; fi ;;
-  *) echo "usage: osd volume up|down|mute | osd mic mute | osd brightness up|down" >&2; exit 1 ;;
+  "layout ")
+    # Cycle kb_layout (us,ch) on all keyboards, then show the active one
+    hyprctl -q switchxkblayout all next
+    keymap=$(hyprctl devices -j | jq -r '[.keyboards[] | select(.main)][0].active_keymap // .keyboards[0].active_keymap')
+    if have_osd; then swayosd-client --custom-icon input-keyboard-symbolic --custom-message "$keymap"
+    else notify-send -t 1500 -i input-keyboard "$keymap"; fi ;;
+  *) echo "usage: osd volume up|down|mute | osd mic mute | osd brightness up|down | osd layout" >&2; exit 1 ;;
 esac
