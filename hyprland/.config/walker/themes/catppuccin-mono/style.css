@@ -204,7 +204,7 @@ row:selected .item-box {
   font-family: monospace;
 }
 
-/* Monospace variant for table-like lists (keybinding overview, Super+K) */
+/* Monospace variant for table-like lists (keybinding overview, Super+/) */
 .item-text,
 .item-subtext,
 .input {

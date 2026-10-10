@@ -302,7 +302,8 @@ hl.bind(mainMod .. " + F",     hl.dsp.window.fullscreen({ mode = "fullscreen", a
 local screenshot = "OMARCHY_SCREENSHOT_DIR=$HOME/Pictures/Screenshots $HOME/.local/bin/screenshot"
 hl.bind("Print",                    hl.dsp.exec_cmd(screenshot), { desc = "Screenshot" })
 hl.bind("XF86SelectiveScreenshot",  hl.dsp.exec_cmd(screenshot), { desc = "Screenshot (ThinkPad key)" })
-hl.bind(mainMod .. " + K",           hl.dsp.exec_cmd("$HOME/.local/bin/keybindings"), { desc = "Show keybindings" })
+-- Binds resolve against the first layout (US), so this is the "-" key on CH too
+hl.bind(mainMod .. " + slash",       hl.dsp.exec_cmd("$HOME/.local/bin/keybindings"), { desc = "Show keybindings" })
 hl.bind(mainMod .. " + CTRL + V",    hl.dsp.exec_cmd("walker -m clipboard"),         { desc = "Clipboard history" })
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("$HOME/.local/bin/powermenu"), { desc = "Power menu" })
 
@@ -321,19 +322,29 @@ end, { desc = "Quit app" })
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("uwsm stop"), { desc = "Log out" })
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }), { desc = "Toggle floating" })
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo(), { desc = "Toggle pseudo-tiling" })
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"), { desc = "Toggle split direction" })    -- dwindle only
+hl.bind(mainMod .. " + S", hl.dsp.layout("togglesplit"), { desc = "Toggle split direction" })    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }), { desc = "Focus window left" })
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }), { desc = "Focus window right" })
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }), { desc = "Focus window up" })
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }), { desc = "Focus window down" })
+-- Same with vim keys
+hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }), { desc = "Focus window left" })
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }), { desc = "Focus window right" })
+hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }), { desc = "Focus window up" })
+hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }), { desc = "Focus window down" })
 
 -- Swap the active window with its neighbour with mainMod + SHIFT + arrow keys (like Omarchy)
 hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.swap({ direction = "l" }), { desc = "Swap window left" })
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "r" }), { desc = "Swap window right" })
 hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.swap({ direction = "u" }), { desc = "Swap window up" })
 hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.swap({ direction = "d" }), { desc = "Swap window down" })
+-- Same with vim keys
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "l" }), { desc = "Swap window left" })
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "r" }), { desc = "Swap window right" })
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "u" }), { desc = "Swap window up" })
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "d" }), { desc = "Swap window down" })
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -344,8 +355,8 @@ for i = 1, 10 do
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"), { desc = "Toggle scratchpad" })
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }), { desc = "Move window to scratchpad" })
+hl.bind(mainMod .. " + A",         hl.dsp.workspace.toggle_special("magic"), { desc = "Toggle scratchpad" })
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.window.move({ workspace = "special:magic" }), { desc = "Move window to scratchpad" })
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }), { desc = "Next workspace" })
