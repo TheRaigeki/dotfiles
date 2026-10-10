@@ -372,6 +372,15 @@ hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("$HOME/.local/bin/osd volume dow
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("$HOME/.local/bin/osd volume mute"),     { locked = true , desc = "Mute" })
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("$HOME/.local/bin/osd mic mute"),   { locked = true , desc = "Mute microphone" })
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd("$HOME/.local/bin/osd layout"), { locked = true , desc = "Switch keyboard layout (US/CH)" })
+
+-- While the screen is off before the idle lock (~/.local/bin/idle-lock off),
+-- the key that wakes it only turns the screen on and never reaches an app
+hl.define_submap("idle", function()
+    hl.bind("catchall", function()
+        hl.dispatch(hl.dsp.dpms({ action = "on" }))
+        hl.dispatch(hl.dsp.submap("reset"))
+    end, { ignore_mods = true })
+end)
 hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness up"),                  { locked = true, repeating = true , desc = "Brightness up" })
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness down"),                  { locked = true, repeating = true , desc = "Brightness down" })
 
