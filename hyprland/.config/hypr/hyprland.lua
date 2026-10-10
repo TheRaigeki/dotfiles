@@ -302,6 +302,8 @@ hl.bind(mainMod .. " + F",     hl.dsp.window.fullscreen({ mode = "fullscreen", a
 local screenshot = "OMARCHY_SCREENSHOT_DIR=$HOME/Pictures/Screenshots $HOME/.local/bin/screenshot"
 hl.bind("Print",                    hl.dsp.exec_cmd(screenshot), { desc = "Screenshot" })
 hl.bind("XF86SelectiveScreenshot",  hl.dsp.exec_cmd(screenshot), { desc = "Screenshot (ThinkPad key)" })
+hl.bind(mainMod .. " + K",           hl.dsp.exec_cmd("$HOME/.local/bin/keybindings"), { desc = "Show keybindings" })
+hl.bind(mainMod .. " + CTRL + V",    hl.dsp.exec_cmd("walker -m clipboard"),         { desc = "Clipboard history" })
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("$HOME/.local/bin/powermenu"), { desc = "Power menu" })
 
 -- Super+Q: quit the whole app, i.e. close every window with the same class as the active one
@@ -317,15 +319,15 @@ end, { desc = "Quit app" })
 
 -- Super+M: log out cleanly (uwsm stop instead of exit, as the Hyprland wiki recommends)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("uwsm stop"), { desc = "Log out" })
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }), { desc = "Toggle floating" })
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo(), { desc = "Toggle pseudo-tiling" })
+hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"), { desc = "Toggle split direction" })    -- dwindle only
 
 -- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }), { desc = "Focus window left" })
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }), { desc = "Focus window right" })
+hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }), { desc = "Focus window up" })
+hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }), { desc = "Focus window down" })
 
 -- Swap the active window with its neighbour with mainMod + SHIFT + arrow keys (like Omarchy)
 hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.swap({ direction = "l" }), { desc = "Swap window left" })
@@ -337,35 +339,35 @@ hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.swap({ direction = "d" }), 
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
-    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}), { desc = "Go to workspace " .. i })
+    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }), { desc = "Move window to workspace " .. i })
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"), { desc = "Toggle scratchpad" })
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }), { desc = "Move window to scratchpad" })
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }), { desc = "Next workspace" })
+hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }), { desc = "Previous workspace" })
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true, desc = "Move window" })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true, desc = "Resize window" })
 
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("$HOME/.local/bin/osd volume up"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("$HOME/.local/bin/osd volume down"),      { locked = true, repeating = true })
-hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("$HOME/.local/bin/osd volume mute"),     { locked = true })
-hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("$HOME/.local/bin/osd mic mute"),   { locked = true })
-hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness up"),                  { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness down"),                  { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("$HOME/.local/bin/osd volume up"), { locked = true, repeating = true , desc = "Volume up" })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("$HOME/.local/bin/osd volume down"),      { locked = true, repeating = true , desc = "Volume down" })
+hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("$HOME/.local/bin/osd volume mute"),     { locked = true , desc = "Mute" })
+hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("$HOME/.local/bin/osd mic mute"),   { locked = true , desc = "Mute microphone" })
+hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness up"),                  { locked = true, repeating = true , desc = "Brightness up" })
+hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("$HOME/.local/bin/osd brightness down"),                  { locked = true, repeating = true , desc = "Brightness down" })
 
 -- Requires playerctl
-hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true , desc = "Next track" })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true , desc = "Play/pause" })
+hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true , desc = "Play/pause" })
+hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true , desc = "Previous track" })
 
 
 --------------------------------
