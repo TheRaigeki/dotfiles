@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Battery charge limit for the waybar tray drawer.
+# `status` prints the waybar JSON (icon, tooltip, class); `toggle` switches
+# between the 80 % default and a one-off 100 % (until the next boot, when
+# battery-threshold.service restores 80 %). The sysfs write needs root and
+# goes through /usr/local/bin/battery-limit-set (sudoers NOPASSWD).
+# Usage: battery-limit status|toggle
+end=/sys/class/power_supply/BAT0/charge_control_end_threshold
+
+case "$1" in
+  status)
+    limit=$(cat "$end")
+    if [[ $limit -ge 100 ]]; then
+      printf '{"text":"󰁹","class":"full","tooltip":"Battery limit: 100%% (until reboot)\\nClick to go back to 80%%"}\n'
+    else
+      printf '{"text":"󰂀","class":"limited","tooltip":"Battery limit: %s%%\\nClick for a one-off 100%% charge"}\n' "$limit"
+    fi ;;
+  toggle)
+    if [[ $(cat "$end") -ge 100 ]]; then new=80; else new=100; fi
+    if sudo -n /usr/local/bin/battery-limit-set "$new"; then
+      notify-send -a battery-limit "Battery limit: $new%" \
+        "$([[ $new == 100 ]] && echo 'Charges to 100% until the next boot' || echo 'Back to the 80% default')"
+    else
+      notify-send -u critical -a battery-limit "Battery limit" "Could not set $new% (sudo rule missing?)"
+    fi
+    pkill -RTMIN+8 waybar ;;
+  *) echo "usage: battery-limit status|toggle" >&2; exit 2 ;;
+esac

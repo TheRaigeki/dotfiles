@@ -148,8 +148,17 @@
     },
     "modules": [
       "custom/expand-icon",
+      "custom/battery-limit",
       "tray"
     ]
+  },
+  "custom/battery-limit": {
+    "exec": "$HOME/.local/bin/battery-limit status",
+    "return-type": "json",
+    "interval": 60,
+    "signal": 8,
+    "format": "{}",
+    "on-click": "$HOME/.local/bin/battery-limit toggle"
   },
   "custom/expand-icon": {
     "format": "",

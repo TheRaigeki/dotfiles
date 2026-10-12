@@ -50,6 +50,14 @@
   margin-right: 16px;
 }
 
+#custom-battery-limit {
+  margin-right: 16px;
+}
+
+#custom-battery-limit.full {
+  color: #fab387;
+}
+
 #bluetooth {
   margin-right: 17px;
 }
