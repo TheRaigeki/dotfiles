@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync the mic-mute LED with the default PipeWire source
+After=graphical-session.target pipewire-pulse.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/micmute-led
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target

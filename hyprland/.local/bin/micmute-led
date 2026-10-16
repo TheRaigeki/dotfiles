@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Keeps the F4 mic-mute LED in sync with the default PipeWire source.
+# The kernel binds the LED to the headset-jack capture switch on the HDA codec,
+# not to the internal digital mic (ACP PDM, no hardware mute), so it stays lit.
+# Needs /etc/udev/rules.d/90-micmute-led.rules (makes trigger + brightness writable).
+
+led=/sys/class/leds/platform::micmute
+echo none > "$led/trigger"
+
+last=
+update() {
+  local v=0
+  [[ $(pactl get-source-mute @DEFAULT_SOURCE@ 2>/dev/null) == *yes ]] && v=1
+  [[ $v == "$last" ]] && return
+  echo "$v" > "$led/brightness" && last=$v
+}
+
+update
+pactl subscribe | while read -r line; do
+  case $line in
+    *"on source #"* | *"on server #"*) update ;;
+  esac
+done
